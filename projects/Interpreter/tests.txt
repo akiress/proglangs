@@ -1,0 +1,69 @@
+Works
+Factorial
+
+(define (fac n) (if (b= 0 n) 1 (b* n (fac (b- n 1)))))
+(fac 4)
+24
+(fac 10)
+3628800
+
+--
+
+Does not work
+Maybe scope is wrong. Maybe function?? Could be the b< or b- as b+ seems 
+to work.
+Fibonacci
+
+(define (fib n) (if (b< n 2) n (b+ (fib (b- n 1)) (fib (b- n 2)))))   
+(fib 2)
+0
+(fib 10)
+-80
+
+--
+
+Works
+Doubles x each pass.
+
+(define double (lambda (x) (b+ x x)))
+(double (double (double 2)))
+16
+(double (double (double 3)))
+24
+
+--
+
+Works
+Doubles x once and then squares that number.
+(define sqr (lambda (x) (b* x x)))
+(sqr (sqr (sqr (sqr (double 1)))))
+65536
+(sqr (sqr (double 3)))
+1296
+
+--
+
+Does not work
+
+(define (make-stream n f)
+        (define (next m)
+                (cons m (lambda () (next (f m)))))
+        (next n))
+(define head car)
+(define (tail stream)
+        ((cdr stream)))
+(define (nth stream n)
+        (if (eq? n 0) (head stream)
+            (nth (tail stream) (b- n 1))))
+(define even (make-stream 0 (lambda (n) (b+ n 2))))
+
+
+(head even)
+(head (tail even))
+(head (tail (tail even)))
+(head (tail (tail (tail even)))
+(nth even 5)
+(nth even 1000)
+
+--
+

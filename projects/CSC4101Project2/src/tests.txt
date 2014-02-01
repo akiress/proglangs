@@ -1,0 +1,41 @@
+Regular:null
+(define (fac n) (if (= n 0) 1 (* n (fac (- n 1)))))
+
+--
+b+ error
+(define (fib n) (if (b< n 2) n (b+ (fib (b- n 1)) (fib (b- n 2)))))
+(fib 2)
+
+--
+works
+(define double (lambda (x) (b+ x x)))
+(double (double (double 2)))
+
+--
+Regular:null
+(define sqr (lambda (x) (b* x x)))
+(sqr (sqr (sqr (sqr (double 1)))))
+
+--
+Regular:null
+(define (make-stream n f)
+        (define (next m)
+                (cons m (lambda () (next (f m)))))
+        (next n))
+(define head car)
+(define (tail stream)
+        ((cdr stream)))
+(define (nth stream n)
+        (if (eq? n 0) (head stream)
+            (nth (tail stream) (b- n 1))))
+(define even (make-stream 0 (lambda (n) (b+ n 2))))
+
+(head even)
+(head (tail even))
+(head (tail (tail even)))
+(head (tail (tail (tail even)))
+(nth even 5)
+(nth even 1000)
+
+--
+

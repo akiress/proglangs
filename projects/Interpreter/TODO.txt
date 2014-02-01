@@ -1,0 +1,33 @@
+CSC 4101 Project 2 TODOs: (X = done or good enough...)
+
+  1. (write) is is evaluating and not just pretty printing
+
+  2. (read) is currently taking the 1st arg and dropping it in Regular. It keeps
+     it for the 2nd though.
+
+  3. (display) is not currently working? (does same as write)
+
+  4. (apply) is not currently working
+
+  5. (interaction-environment) does something - not sure if correct though
+
+X 6. asking for a list (after having defined it) returns "error: bad quote
+     printing on my part" for each element in the list
+
+  7. (set-car!) sets the car to () instead of the given value
+
+  8. several things (cdr, cons, set-car!, set-cdr!, etc.) go to pretty
+     printer by default (e.g. (cdr '(a b c)) should be '(b c) / without
+     pretty printer spacing)  
+
+  9. defining something to an existing function prints placeholder twice
+     (e.g. (define + b+), + = placeholder \n placeholder, (+ 2 2) = 4)
+     (scheme48 prints #{Procedure <some#> double} - placeholder will be 
+     fine if it is made to only print once)
+
+X 10. (symbol?) and (number?) return "#f" for undefined variable queries
+       (should only return "undefined variable")
+
+X 11. 'a returns a (should return 'a) and "a" returns a (should be "a")
+
+X 12. make ,exit work? or just stick with the current (quit) and (exit)?
